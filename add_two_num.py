@@ -1,3 +1,5 @@
+#計算速度もメモリ使用量もちょうど真ん中くらい
+
 import re
 
 # Definition for singly-linked list.

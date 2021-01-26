@@ -1,3 +1,6 @@
+#計算時間は上位5%に入った
+#メモリ使用量は下位5%に入った．．．
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if len(s) <= 1: #入力文字列の長さが1以下の時の処理
