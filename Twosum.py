@@ -8,11 +8,17 @@ import re
 
 class Solution:
     def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :type output: List[int]
-        """
+        sum_dict = {}
+
+        for idx, num in enumerate(nums):
+            if num in sum_dict.keys():
+                return [sum_dict[num], idx]
+            sum_dict[target - num] = idx
+
+        return []
+
+
+    def twoSum2(self, nums, target):
         length = len(nums)
         array = []
         for i in range(length):
@@ -23,52 +29,18 @@ class Solution:
         
         sum_result = array + t_array
         
-        answer = ''
+        answer = []
         for i in range(length - 1):
             for j in np.arange(i+1, length):
                 if sum_result[i][j] == target:
-                    answer = "[" + str(i) + "," + str(j) + "]"
+                    answer = [i,j]
 
         return answer
 
 def main():
+    nums = [2,7,11,15]
+    target = 9
     solution = Solution()
-    while True:
-        nums_str = input()
-        
-        nums_list = re.split('[\[,\]]', nums_str)
-
-        nums = []
-        for num in nums_list:
-            if num != '':
-                try:
-                    if int(num) >= -10**9 and int(num) <= 10**9:
-                        nums.append(int(num))
-                    else:
-                        print("num is \"-10^9 <= num <= 10^9\"")
-                        continue
-                except ValueError as e:
-                    print("input example: [1,2,4,7]")
-                    continue
-        
-        length = len(nums)
-        if length >= 2 and length <= 1000:
-            break
-        else:
-            print("length of list is \"2 <= num <= 1000\"")
-
-    while True:
-        try:
-            target = int(input())
-        except ValueError as e:
-            print("int only")
-            continue
-
-        if target >= -10**9 and target <= 10**9:
-            break
-        else:
-            print("target is \"-10^9 <= target <= 10^9\"")
-    
     answer = solution.twoSum(nums, target)
     print(answer)
 
